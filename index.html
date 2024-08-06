@@ -332,23 +332,6 @@ https://www.tooplate.com/view/2115-marvel
               </div>
             </div>
           </div>
-
-          <div class="col-lg-5 col-12">
-            <h2 class="mb-4 mobile-mt-2">Educations</h2>
-            <div class="timeline">
-              <div class="timeline-wrapper">
-                <div class="timeline-yr">
-                  <span>2016</span>
-                </div>
-                <div class="timeline-info">
-                  <h3>
-                    <span>Bachelor of Computer Science</span
-                    ><small>MARA College Seremban</small>
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -413,7 +396,7 @@ https://www.tooplate.com/view/2115-marvel
             <div class="contact-form">
               <h2 class="mb-4">Interested to work together? Let's talk</h2>
 
-              <form action="" method="get">
+              <form name="contact-form">
                 <div class="row">
                   <div class="col-lg-6 col-12">
                     <input
@@ -422,6 +405,8 @@ https://www.tooplate.com/view/2115-marvel
                       name="name"
                       placeholder="Your Name"
                       id="name"
+                      aria-describedby="name"
+                      name="nama"
                     />
                   </div>
 
@@ -432,6 +417,8 @@ https://www.tooplate.com/view/2115-marvel
                       name="email"
                       placeholder="Email"
                       id="email"
+                      aria-describedby="name"
+                      name="email"
                     />
                   </div>
 
@@ -442,6 +429,7 @@ https://www.tooplate.com/view/2115-marvel
                       class="form-control"
                       id="message"
                       placeholder="Message"
+                      name="pesan"
                     ></textarea>
                   </div>
 
@@ -481,5 +469,18 @@ https://www.tooplate.com/view/2115-marvel
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/smoothscroll.js"></script>
     <script src="js/custom.js"></script>
+
+    <script>
+      const scriptURL =
+        "<https://script.google.com/macros/s/AKfycbwIGDlLttYVrn3_86mkolZgsjiRWPCIAfS6syPU-sMx_9shrXyhEm4r8pAejGXRJy7nlQ/exec>";
+      const form = document.forms["contact-form"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
